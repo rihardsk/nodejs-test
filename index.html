@@ -16,10 +16,14 @@
             var newdiv = document.createElement('div');
             newdiv.innerHTML = String.format("\
                 <div id='shape{0}'>\
-                    <input name='n{0}' type='text'/>\
-                    <input name='x{0}' type='text'/>\
-                    <input name='y{0}' type='text'/>\
-                    <input name='r{0}' type='text'/>\
+                    <label for='n{0}'>Vertices:</label>\
+                    <input name='n{0}' type='number'/>\
+                    <label for='x{0}'>X:</label>\
+                    <input name='x{0}' type='number'/>\
+                    <label for='y{0}'>Y:</label>\
+                    <input name='y{0}' type='number'/>\
+                    <label for='r{0}'>Radius:</label>\
+                    <input name='r{0}' type='number'/>\
                 </div>\
             ",counter);
             document.getElementById(divName).appendChild(newdiv);
@@ -31,10 +35,14 @@
     <form action='/' method='GET'>
         <div id='shape_block'>
             <div id='shape1'>
-                <input name='n1' type='text'/> 
-                <input name='x1' type='text'/> 
-                <input name='y1' type='text'/> 
-                <input name='r1' type='text'/>
+                <label for='n1'>Vertices:</label>
+                <input name='n1' type='number'/> 
+                <label for='x1'>X:</label>
+                <input name='x1' type='number'/> 
+                <label for='y1'>Y:</label>
+                <input name='y1' type='number'/> 
+                <label for='r1'>Radius:</label>
+                <input name='r1' type='number'/>
             </div>
         </div>
         <input type="button" value="Add another shape" onClick="addInput('shape_block');">
