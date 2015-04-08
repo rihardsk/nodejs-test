@@ -17,13 +17,13 @@
             newdiv.innerHTML = String.format("\
                 <div id='shape{0}'>\
                     <label for='n{0}'>Vertices:</label>\
-                    <input name='n{0}' type='number'/>\
+                    <input name='n{0}' type='number' min='0' step='1'/>\
                     <label for='x{0}'>X:</label>\
-                    <input name='x{0}' type='number'/>\
+                    <input name='x{0}' type='number' min='0' step='1'/>\
                     <label for='y{0}'>Y:</label>\
-                    <input name='y{0}' type='number'/>\
+                    <input name='y{0}' type='number' min='0' step='1'/>\
                     <label for='r{0}'>Radius:</label>\
-                    <input name='r{0}' type='number'/>\
+                    <input name='r{0}' type='number' min='0' step='1'/>\
                 </div>\
             ",counter);
             document.getElementById(divName).appendChild(newdiv);
@@ -36,13 +36,13 @@
         <div id='shape_block'>
             <div id='shape1'>
                 <label for='n1'>Vertices:</label>
-                <input name='n1' type='number'/> 
+                <input name='n1' type='number' min='0' step='1'/> 
                 <label for='x1'>X:</label>
-                <input name='x1' type='number'/> 
+                <input name='x1' type='number' min='0' step='1'/> 
                 <label for='y1'>Y:</label>
-                <input name='y1' type='number'/> 
+                <input name='y1' type='number' min='0' step='1'/> 
                 <label for='r1'>Radius:</label>
-                <input name='r1' type='number'/>
+                <input name='r1' type='number' min='0' step='1'/>
             </div>
         </div>
         <input type="button" value="Add another shape" onClick="addInput('shape_block');">
