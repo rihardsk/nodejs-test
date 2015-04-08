@@ -13,7 +13,7 @@ app.get('/', function(req, res) {
             res.send(html);
         });
     }
-    else {
+    else { // render & display the image
         var j = 1;
 
         var canvas = new Canvas(512, 512)

@@ -1,5 +1,44 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <script type="text/javascript">
+        String.format = function() {
+            var s = arguments[0];
+            for (var i = 0; i < arguments.length - 1; i++) {       
+                var reg = new RegExp("\\{" + i + "\\}", "gm");             
+                s = s.replace(reg, arguments[i + 1]);
+            }
+            return s;
+        }
+
+        var counter = 2;
+        function addInput(divName){
+            var newdiv = document.createElement('div');
+            newdiv.innerHTML = String.format("\
+                <div id='shape{0}'>\
+                    <input name='n{0}' type='text'/>\
+                    <input name='x{0}' type='text'/>\
+                    <input name='y{0}' type='text'/>\
+                    <input name='r{0}' type='text'/>\
+                </div>\
+            ",counter);
+            document.getElementById(divName).appendChild(newdiv);
+            counter++;
+        }
+    </script>
+</head>
 <body>
-hello world
+    <form action='/' method='GET'>
+        <div id='shape_block'>
+            <div id='shape1'>
+                <input name='n1' type='text'/> 
+                <input name='x1' type='text'/> 
+                <input name='y1' type='text'/> 
+                <input name='r1' type='text'/>
+            </div>
+        </div>
+        <input type="button" value="Add another shape" onClick="addInput('shape_block');">
+        <input type='submit'/>
+    </form>
 </body>
 </html>
