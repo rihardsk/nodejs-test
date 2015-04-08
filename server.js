@@ -2,12 +2,12 @@ var express = require('express');
 var Canvas = require('canvas');
 var app = express();
 
-app.get('/:n/:x/:y/:radius', function(req, res) {
+app.get('/', function(req, res) {
 
-    var n = parseInt(req.params.n),
-        x = parseInt(req.params.x),
-        y = parseInt(req.params.y),
-        radius = parseInt(req.params.radius);
+    var n = parseInt(req.query.n1),
+        x = parseInt(req.query.x1),
+        y = parseInt(req.query.y1),
+        radius = parseInt(req.query.r1);
 
     var canvas = new Canvas(512, 512)
     var ctx = canvas.getContext('2d');
