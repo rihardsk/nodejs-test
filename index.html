@@ -3,6 +3,7 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript">
+        // String.format("{0} style string {1}", "C#", "format") === "C# style string format"
         String.format = function() {
             var s = arguments[0];
             for (var i = 0; i < arguments.length - 1; i++) {       
@@ -13,7 +14,7 @@
         }
 
         var counter = 2;
-        function addInput(divName){
+        function addShapeInputs(divName){
             var newdiv = document.createElement('div');
             newdiv.innerHTML = String.format("\
                 <label for='n{0}'>Vertices:</label>\
@@ -63,7 +64,7 @@
                 <input class='r' name='r1' type='number' min='0' step='1'/>
             </div>
         </div>
-        <input type="button" value="Add another shape" onClick="addInput('shape_block');">
+        <input type="button" value="Add another shape" onClick="addShapeInputs('shape_block');">
         <input type='submit'/>
     </form>
     <img id='shape_img'/>
