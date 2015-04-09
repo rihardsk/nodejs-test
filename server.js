@@ -17,19 +17,18 @@ app.get('/', function(req, res) {
         console.log('rendering');
         debugger;
         //console.log(req.query.shapes.n1);
-        var j = 1;
 
         var canvas = new Canvas(512, 512)
         var ctx = canvas.getContext('2d');
 
-        while(true){ // read in j-th shape parameters and render it
-            if ( !('n' + j in req.query && 'x' + j in req.query && 'y' + j in req.query && 'r' + j in req.query)){
-                break;
-            }
-            var n = parseInt(req.query['n' + j]),
-                x = parseInt(req.query['x' + j]),
-                y = parseInt(req.query['y' + j]),
-                radius = parseInt(req.query['r' + j]);
+        var parsedShapes = JSON.parse(req.query.shapes); 
+        var j = 0;
+        for (j = 0; j < parsedShapes.length; j++) { // read in j-th shape parameters and render it
+            console.log('shape ' + j);
+            var n = parseInt(parsedShapes[j].n),
+                x = parseInt(parsedShapes[j].x),
+                y = parseInt(parsedShapes[j].y),
+                radius = parseInt(parsedShapes[j].r);
 
 
             
@@ -52,7 +51,6 @@ app.get('/', function(req, res) {
 
             ctx.stroke();
 
-            j++;
         }
         var stream = canvas.createPNGStream();
 
