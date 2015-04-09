@@ -14,6 +14,9 @@ app.get('/', function(req, res) {
         });
     }
     else { // render & display the image
+        console.log('rendering');
+        debugger;
+        //console.log(req.query.shapes.n1);
         var j = 1;
 
         var canvas = new Canvas(512, 512)

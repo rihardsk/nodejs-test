@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="text/javascript">
         String.format = function() {
             var s = arguments[0];
@@ -15,38 +16,56 @@
         function addInput(divName){
             var newdiv = document.createElement('div');
             newdiv.innerHTML = String.format("\
-                <div id='shape{0}'>\
-                    <label for='n{0}'>Vertices:</label>\
-                    <input name='n{0}' type='number' min='0' step='1'/>\
-                    <label for='x{0}'>X:</label>\
-                    <input name='x{0}' type='number' min='0' step='1'/>\
-                    <label for='y{0}'>Y:</label>\
-                    <input name='y{0}' type='number' min='0' step='1'/>\
-                    <label for='r{0}'>Radius:</label>\
-                    <input name='r{0}' type='number' min='0' step='1'/>\
-                </div>\
+                <label for='n{0}'>Vertices:</label>\
+                <input class='n' name='n{0}' type='number' min='0' step='1'/>\
+                <label for='x{0}'>X:</label>\
+                <input class='x' name='x{0}' type='number' min='0' step='1'/>\
+                <label for='y{0}'>Y:</label>\
+                <input class='y' name='y{0}' type='number' min='0' step='1'/>\
+                <label for='r{0}'>Radius:</label>\
+                <input class='r' name='r{0}' type='number' min='0' step='1'/>\
             ",counter);
+            newdiv.setAttribute('id', 'shape' + counter);
+            newdiv.setAttribute('class', 'shape-inputs');
             document.getElementById(divName).appendChild(newdiv);
             counter++;
+        }
+
+        function loadImage(formID, imgID) {
+            var shapeInputs = $('.shape-inputs');
+            var parsedShapes = [];
+            shapeInputs.each(function() {
+                var shape = {
+                    'n': $(this).find('.n').val(),
+                    'x': $(this).find('.x').val(),
+                    'y': $(this).find('.y').val(),
+                    'r': $(this).find('.r').val()
+                }
+                parsedShapes.push(shape);
+            });
+            var encodedData  = encodeURIComponent(JSON.stringify(parsedShapes));
+            $('#' + imgID).attr('src', "/?shapes=" + encodedData);
+            return false;
         }
     </script>
 </head>
 <body>
-    <form action='/' method='GET'>
+    <form action='#' onsubmit='return loadImage("input_form", "shape_img")' method='GET' id='input_form'>
         <div id='shape_block'>
-            <div id='shape1'>
+            <div id='shape1' class='shape-inputs'>
                 <label for='n1'>Vertices:</label>
-                <input name='n1' type='number' min='0' step='1'/> 
+                <input class='n' name='n1' type='number' min='0' step='1'/> 
                 <label for='x1'>X:</label>
-                <input name='x1' type='number' min='0' step='1'/> 
+                <input class='x' name='x1' type='number' min='0' step='1'/> 
                 <label for='y1'>Y:</label>
-                <input name='y1' type='number' min='0' step='1'/> 
+                <input class='y' name='y1' type='number' min='0' step='1'/> 
                 <label for='r1'>Radius:</label>
-                <input name='r1' type='number' min='0' step='1'/>
+                <input class='r' name='r1' type='number' min='0' step='1'/>
             </div>
         </div>
         <input type="button" value="Add another shape" onClick="addInput('shape_block');">
         <input type='submit'/>
     </form>
+    <img id='shape_img'/>
 </body>
 </html>
