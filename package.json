@@ -1,0 +1,25 @@
+{
+  "name": "orangelv",
+  "version": "1.0.0",
+  "description": "node-canvas shape rendering",
+  "main": "server.js",
+  "dependencies": {
+    "canvas": "^1.2.1",
+    "express": "^4.12.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://rihardsk@github.com/rihardsk/nodejs-test.git"
+  },
+  "author": "Rihards Krišlauks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rihardsk/nodejs-test/issues"
+  },
+  "homepage": "https://github.com/rihardsk/nodejs-test"
+}
